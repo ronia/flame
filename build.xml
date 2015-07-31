@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="flame">
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.7" />
+	<property name="source" value="1.7" />
+
+	<target name="check_os">
+		<echo message="OS Name is:         ${os.name}" />
+	    <echo message="OS Architecture is: ${os.arch}" />
+	    <echo message="OS Version is:      ${os.version}" />
+	</target>
+
+	<path id="flame.classpath">
+		<pathelement location="bin" />
+		<pathelement location="lib/PrismMW2.1.1.jar" />
+		<!-- 
+			Choose one of the two below according to the "bitness" of your Java
+			<pathelement location="lib/swt_win32_x64.jar" />
+			<pathelement location="lib/swt_win32_x86.jar" />
+		-->
+		<pathelement location="lib/swt_win32_x64.jar" />
+		<pathelement location="lib/ostermillerutils-1.08.02.jar" />
+	</path>
+
+
+	<target name="init">
+		<antcall target="check_os" />
+
+		<mkdir dir="bin" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src/flame">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+				<exclude name=".svn/" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="clean">
+		<delete dir="bin" />
+	</target>
+	
+	<target depends="clean" name="cleanall" />	
+	<target depends="init" name="build">
+		<javac debug="true" fork="yes" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}" includeDestClasses="true" includeantruntime="false">
+			<exclude name=".svn/" />
+			<exclude name=".git/" />
+			<src path="src"/>
+            <src path="res"/>
+			<classpath refid="flame.classpath" />
+		</javac>
+	</target>
+	
+	<target depends="build" name="FLAMEClient">
+		<java classname="flame.client.FLAMEClient" failonerror="true" fork="no">
+			<arg line="YES" />
+			<classpath refid="flame.classpath" />
+		</java>
+	</target>
+
+	<target depends="build" name="FLAMEClient_NoGUI">
+		<java classname="flame.client.FLAMEClient" failonerror="true" fork="no">
+			<arg line="NO" />
+			<classpath refid="flame.classpath" />
+		</java>
+	</target>
+
+	<target depends="build" name="XTEAMEngineMRSV">
+		<property name= "username" value="" />
+		<java classname="flame.detectors.xteam.XTEAMEngine" failonerror="true" fork="yes">
+			<arg line="4444" />
+			<arg line="MRSV" />
+			<arg line= "${username}" />
+			<classpath refid="flame.classpath" />
+		</java>
+	</target>
+	
+	<target depends="build" name="XTEAMEngineLSV">
+		<property name= "username" value="" />
+		<java classname="flame.detectors.xteam.XTEAMEngine" failonerror="true" fork="yes">
+			<arg line="4444" />
+			<arg line="LSV" />
+			<arg line= "${username}" />
+			<classpath refid="flame.classpath" />
+		</java>
+	</target>
+	
+	<target depends="build" name="XTEAMEngineLocalV">
+		<property name= "username" value="" />
+		<java classname="flame.detectors.xteam.XTEAMEngine" failonerror="true" fork="yes">
+			<arg line="4444" />
+			<arg line="LocalV" />
+			<arg line= "${username}" />
+			<classpath refid="flame.classpath" />
+		</java>
+	</target>
+
+	<target depends="build" name="XTEAMEngineHeadLocalV">
+		<property name= "username" value="" />
+		<java classname="flame.detectors.xteam.XTEAMEngine" failonerror="true" fork="yes">
+			<arg line="4444" />
+			<arg line="HeadLocalV" />
+			<arg line= "${username}" />
+			<classpath refid="flame.classpath" />
+		</java>
+	</target>
+
+	<target depends="build" name="FLAMEServer">
+		<java classname="flame.server.FLAMEServer" failonerror="true" fork="yes">
+			<arg line="4444" />
+			<classpath refid="flame.classpath" />
+		</java>
+	</target>
+	
+</project>

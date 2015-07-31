@@ -1,0 +1,190 @@
+########################################################
+# config.properties
+# This file carries property values FLAME uses.
+# Author: Jae young Bang <jaeyounb@usc.edu>
+########################################################
+
+
+########################################################
+# Frequently configured properties
+########################################################
+
+# Address of the FLAMEServer instance, used by FLAMEClient
+SERVER=[FLAME SERVER HOST ADDRESS HERE]
+
+# Port number used for Extended Port by Server, Client, and XTEAMEngines
+PORT=[PORT NUMBER HERE]
+
+# FLAMEClient & XTEAMEngine original model file (.mga) path
+MODEL_FILE_PATH=./init_model/[MODEL FILE NAME HERE]
+
+# GME executable path
+GME_EXE_PATH=C:/Program Files (x86)/GME/Bin/GME.exe
+
+########################################################
+# Other important properties
+########################################################
+
+# Maximum number of threads running XTEAM simulations concurrently
+XTEAM_THREADS=2
+
+# Visual Studio 2008 compiler executable path (devenv.exe)
+XTEAM_VS_PATH=C:/Program Files (x86)/Microsoft Visual Studio 9.0/Common7/IDE/devenv.exe
+
+# Port number of the server port of PortNumberTracker
+TRACKER_PORT=52530
+
+# FLAME Server log directory path (comment it out if you don't want logging)
+FLAME_SERVER_LOG_PATH=./log/
+
+# FLAMEClient & XTEAMEngine model file (.mga) copy directory path
+MODEL_FILE_DIR_PATH=./models
+
+# XTEAM analysis information file
+XTEAM_INFO=XTEAM_Info.dat
+
+# XTEAM Engine Scaffold code path
+XTEAM_ENGINE_SCAFFOLD_PATH=./scaffold
+
+# XTEAM simulation target time
+XTEAM_TARGET_TIME=2500
+
+# XTEAM GUI window on/off for the case study
+XTEAM_GUI=ON
+
+# MRSV Engine Switch: if this switch is on, MRSV XTEAM engine turns on
+MRSV_SWITCH=OFF
+
+# LSV Engine Switch: if this switch is on, LSV XTEAM engine turns on
+LSV_SWITCH=OFF
+
+# LocalV Engine Switch: if this switch is on, LocalV XTEAM engine turns on
+LOCALV_SWITCH=OFF
+
+# HeadLocalV Engine Switch: if this switch is on, HeadLocalV XTEAM engine turns on
+HEADLOCALV_SWITCH=ON
+
+########################################################
+# FLAME Analyzer Properties
+########################################################
+
+# Path to the data directory
+DATA_DIRECTORY=./data/
+
+# Path to the result directory
+RESULT_DIRECTORY=./result/
+
+# Filename: Default values
+FILENAME_DEFAULT_VALUES=exp_default.dat
+
+# Filename: Option values
+FILENAME_OPTIONS_VALUES=exp_options.dat
+
+# Filename: Log file from FLAME that has all events
+FILENAME_LOG_EVENT=log_events.csv
+
+# Filename: Log file from FLAME that has all analysis results
+FILENAME_LOG_ANALYSIS=log_analyses.csv
+
+# Filename: Log file from FLAME that has all snapshot history
+FILENAME_LOG_SNAPSHOT=log_snapshots.csv
+
+# Filename: FLAME Analyzer output: analysis and snapshot combined
+FILENAME_OUT_COMBINED_ANALYSIS=analyses_and_snapshots.csv
+
+# Filename: FLAME Analyzer output: event and snapshot combined
+FILENAME_OUT_COMBINED_EVENT=events_and_snapshots.csv
+
+# Filename: FLAME Analyzer output: inconsistencies analysis
+FILENAME_OUT_INCONSISTENCY=conflicts.csv
+
+# Filename: FLAME Analyzer output: unhandled inconsistencies at snapshots analysis
+FILENAME_OUT_SNAPSHOT=conflicts_at_commits.csv
+
+# Filename: FLAME Analyzer output: unhandled inconsistencies at snapshots analysis
+FILENAME_OUT_UPDATE=conflicts_at_updates.csv
+
+# Filename: FLAME Analyzer output: human-readable value switches
+FILENAME_OUT_VALUE_CHANGE=value_changes.csv
+
+# Filename: FLAME Analyzer output: human-readable option switches
+FILENAME_OUT_OPTION_CHANGE=option_changes.csv
+
+# Filename: FLAME Analyzer output: analyses from all directories together
+FILENAME_OUT_ALL_ANALYSES=all_analyses.csv
+
+# Filename: FLAME Analyzer output: events from all directories together
+FILENAME_OUT_ALL_EVENTS=all_events.csv
+
+# Filename: FLAME Analyzer output: conflicts from all directories together
+FILENAME_OUT_ALL_CONFLICTS=all_conflicts.csv
+
+# Filename: FLAME Analyzer output: conflicts at commits from all directories together
+FILENAME_OUT_ALL_CONFLICTS_AT_COMMITS=all_conflicts_at_commits.csv
+
+# Filename: FLAME Analyzer output: conflicts at updates from all directories together
+FILENAME_OUT_ALL_CONFLICTS_AT_UPDATES=all_conflicts_at_updates.csv
+
+# Filename: FLAME Analyzer output: value changes from all directories together
+FILENAME_OUT_ALL_VALUE_CHANGES=all_value_changes.csv
+
+# Filename: FLAME Analyzer output: option changes from all directories together
+FILENAME_OUT_ALL_OPTION_CHANGES=all_option_changes.csv
+
+# Filename: FLAME Analyzer output: FLAMEEngineNumCalc output
+FILENAME_OUT_ALL_ENGINE_NUM=all_flame_engine_number.csv
+
+# Filename: FLAME Analyzer output: FLAMESlaveNumCalc output
+FILENAME_OUT_ALL_SLAVE_NUM=all_flame_slave_number.csv
+
+# Target time (seconds) FLAMESlaveNumCalc will monitor
+LONGEST_CONFLICT_DETECTION_TIME=30
+
+########################################################
+# XTEAM Slave Properties 
+########################################################
+
+# Switch to use distributed conflict detection with slaves. (true/false)
+DISTRIBUTED_CONFLICT_DETECTION=true
+
+# Switch to run later simulation requests first. (true/false)
+REVERSE_CONFLICT_DETECTION=false
+
+# Port number of the Slave Manager
+SM_PORT=52531
+
+# The directory under simulation directory where the received simulation result is
+SM_RECEIVED_SIMULATION_RESULT_DIR=result
+
+# The directory in which the scaffold project for the XTEAM Slave is stored
+SLAVE_SCAFFOLD_DIR=./scaffold_linux
+
+# The directory in which the XTEAM Slave stores the received source code archives
+SLAVE_RECEIVED_ARCHIVES_DIR=./received
+
+# The directory in which the source code archive directories are created
+SLAVE_SIMULATIONS_DIR=./simulations
+
+# The Path to the make program
+SLAVE_MAKE_PATH=/usr/bin/make
+
+# The path from which the XTEAM Slave can find the "makefile" template
+SLAVE_MAKEFILE_TEMPLATE=./scaffold_linux/build/makefile_template
+
+# The directory in which the "makefile" of Adevs is 
+SLAVE_MAKEFILE_ADEVS=adevs-1.3.3/src
+
+# The directory in which the "makefile" of Newran is
+SLAVE_MAKEFILE_NEWRAN=newran02
+
+# The executable file path from the directory in which the source code is
+SLAVE_EXECUTABLE_FILE=bin/simulation
+
+# The name of the file that contains the list of errors occurred during simulation
+SLAVE_ERRORS_FILENAME=Simulation_Errors.txt
+
+# The number of cores the XTEAM Slave can use
+SLAVE_CORES=2
+
+# Slave node name file
+SLAVE_NODE_NAME_FILE=node_name.txt
